@@ -6,18 +6,15 @@ export default function PokemonList() {
   useEffect(() => {
       const fetchPokemon = async () => {
           const res = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
-          const { data } = res.json();
+          const data = res.json();
           console.log(data);
-          const pokemonData = data.map((pokes) => ({
-              img: pokes.url_image,
-              name: pokes.pokemon,
-              type: pokes.type,
-          })),
-          setPokemon(pokemonData);
+          setPokemon(data.results);
       };
       fetchPokemon();
 
   }, []);
 
-  return <div>Pokemon of the World</div>;
+  return (
+  <div>Search Pokemon of the World</div>
+  );
 }
