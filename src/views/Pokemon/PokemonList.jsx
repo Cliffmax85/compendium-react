@@ -14,8 +14,8 @@ export default function PokemonList() {
 
     const handleSearch = (e) => {
         setSearch(e.target.value);
-        const filteredPokemon = pokemon.filter((pokemon) => 
-        pokemon.pokemon.toLowerCase().includes(e.target.value.toLowerCase().trim()));
+        const filteredPokemon = pokemon.filter((poke) => 
+        poke.name.toLowerCase().includes(e.target.value.toLowerCase().trim()));
 
         setResults(filteredPokemon);
     };
@@ -24,7 +24,6 @@ export default function PokemonList() {
       const fetchPokemon = async () => {
           const res = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
           const  { results }  = await res.json();
-          console.log(results);
           const pokemonData = results.map((poke) => ({
               img: poke.url_image,
               name: poke.pokemon,
@@ -40,12 +39,29 @@ export default function PokemonList() {
   return (
   <>
     <h2>Who's That Pokémon?</h2>
-    <div className={styles.pokemon}>
-        {pokemon.map((poke) => {
-          return (
-            <Card img={poke.img} name={poke.name} type={poke.type} />
-          );
-          })}
+     <div>
+         <input
+           placeholder="find that pokemon"
+           value={search}
+           onChange={handleSearch}
+         />
+     </div>
+     <div>
+      {loading ? (
+        <p>...Loading</p>
+      ) : (
+        <div className={styles.pokemon}>
+            {pokemonList.map((pokemon) => {
+                return (
+                    <Card
+                      img={pokemon.img}
+                      name={pokemon.name}
+                      type={pokemon.type}
+                    />
+                )
+            })}
+        </div>
+      )}
     </div>
   </>
   );
