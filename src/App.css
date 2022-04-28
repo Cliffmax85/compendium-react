@@ -21,4 +21,12 @@ body,
 img {
     width: 200px;
     height: 200px;
+    background-color: darkslateblue;
+    padding: .5rem;
+    justify-content: center;
+    text-align: center;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
 }

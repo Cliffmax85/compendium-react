@@ -8,7 +8,17 @@ export default function PokemonList() {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState('');
 
+    const searching = !!search.length;
+    const noResults = searching && !results.length;
+    const pokemonList = searching ? results: pokemon;
 
+    const handleSearch = (e) => {
+        setSearch(e.target.value);
+        const filteredPokemon = pokemon.filter((pokemon) => 
+        pokemon.pokemon.toLowerCase().includes(e.target.value.toLowerCase().trim()));
+
+        setResults(filteredPokemon);
+    };
 
   useEffect(() => {
       const fetchPokemon = async () => {
@@ -21,6 +31,7 @@ export default function PokemonList() {
               type: poke.type_1,
           }))
           setPokemon(pokemonData);
+          setLoading(false);
       };
       fetchPokemon();
 
@@ -28,6 +39,7 @@ export default function PokemonList() {
 
   return (
   <>
+    <h2>Who's That Pokémon?</h2>
     <div className={styles.pokemon}>
         {pokemon.map((poke) => {
           return (
