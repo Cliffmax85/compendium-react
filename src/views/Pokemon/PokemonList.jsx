@@ -15,6 +15,6 @@ export default function PokemonList() {
   }, []);
 
   return (
-  <div>Search Pokemon of the World</div>
+  <><div>Search Pokemon of the World</div><div>{pokemon}</div></>
   );
 }
