@@ -1,0 +1,24 @@
+
+html,
+body,
+#root,
+.App {
+  height: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  font-family: monospace;
+  background-color: aquamarine;
+}
+
+.pokemon {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: coral;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}

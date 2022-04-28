@@ -1,8 +1,11 @@
-export default function PokeCard({ pokemon }) {
+import styles from '../App.css';
+
+export default function PokemonCard({ img, name, type }) {
     return (
-        <div className={styles['item']} >
-            <h2>{pokemon.pokemon}</h2>
-            <img src={pokemon.url_image} alt='pokemon' />
-        </div>
+      <div>
+       <p>{name}</p>
+       <img className={styles.img} src={img} alt="pokemon"/>
+       <p>{type}</p>
+      </div>
     );
-}
+  }
