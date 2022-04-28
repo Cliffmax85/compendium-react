@@ -63,6 +63,7 @@ export default function PokemonList() {
         </div>
       )}
     </div>
+    {noResults && <h1>NO POKÉMON!?</h1>}
   </>
   );
 }
